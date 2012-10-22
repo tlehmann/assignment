@@ -36,7 +36,10 @@ class Sorter:
     def sort(self, list):
         sorted_list = self.internal_sorter(list)
         return(sorted_list)
-
+        
+    def algs(self):
+      return ["bubble","quick","insertion","heap"]
+      
 class Writer:
     def __init__(self, filename):
         self.filename = filename
@@ -44,6 +47,9 @@ class Writer:
     def write(self, list):
         f = open(self.filename, "w")
         for s in list:
+          if not '\n' in s:
+            f.write(s+'\n')
+          else:
             f.write(s)
 
 def bubble_sorter(list):
@@ -118,18 +124,25 @@ def main():
     print("input filename = " + input_filename)
     print("output filename = " + output_filename)
     
+    s = Sorter(sort_algo)
+    algs_list = s.algs()
+    
+    if not sort_algo in algs_list:
+      sort_algo = "default"
+    
+    print("sort algo = " + sort_algo)
+    
     reader = Reader(input_filename)
     list = reader.read()
     print "Before:"
     print list
    
-    s = Sorter(sort_algo)
     sorted_list = s.sort(list)
 
     w = Writer(output_filename)
     w.write(sorted_list)
     print "After:"
-    print list
+    print sorted_list
 
 if __name__ == "__main__":
     main()
