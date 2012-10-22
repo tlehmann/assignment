@@ -1,0 +1,16 @@
+alpha
+beta
+gamma
+delta
+epsilon
+nu
+mu
+zeta
+upsilon
+tau
+phi
+kappa
+omega
+pi
+sigma
+lamda
